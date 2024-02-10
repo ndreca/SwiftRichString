@@ -90,7 +90,7 @@ public class Style: StyleProtocol {
 		}
 	}
 
-	#if os(tvOS) || os(watchOS) || os(iOS)
+	#if os(tvOS) || os(watchOS) || os(iOS) || os(visionOS)
     /// Set the dynamic text attributes to adapt the font/text to the current Dynamic Type settings.
     /// **Note**: in order to be used you must also set the `.font`/`.size` attribute of the style.
     @available(iOS 11.0, tvOS 11.0, iOSApplicationExtension 11.0, watchOS 4, *)
@@ -342,7 +342,7 @@ public class Style: StyleProtocol {
 		}
 	}
 	
-	#if os(iOS) || os(tvOS) || os(macOS)
+	#if os(iOS) || os(visionOS) || os(tvOS) || os(macOS)
 
 	/// The value of this attribute is an `NSShadow` object. The default value of this property is nil.
 	public var shadow: NSShadow? {
@@ -356,7 +356,7 @@ public class Style: StyleProtocol {
 
 	#endif
 	
-	#if os(iOS) || os(tvOS) || os(watchOS)
+	#if os(iOS) || os(visionOS) || os(tvOS) || os(watchOS)
 	
 	/// Enable spoken of all punctuation in the text.
 	public var speaksPunctuation: Bool? {
@@ -442,7 +442,7 @@ public class Style: StyleProtocol {
 		get { return self.get(attributeForKey: .link) }
 	}
 	
-	#if os(OSX) || os(iOS) || os(tvOS)
+	#if os(OSX) || os(iOS) || os(visionOS) || os(tvOS)
 	
 	///  Configuration for the number case, also known as "figure style".
 	/// **Note**: in order to be used you must also set the `.font`/`.size` attribute of the style.

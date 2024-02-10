@@ -38,7 +38,7 @@ import UIKit
 
 public extension AttributedString {
     
-    #if os(iOS)
+    #if os(iOS) || os(visionOS)
 
     /// Initialize a new text attachment with a remote image resource.
     /// Image will be loaded asynchronously after the text appear inside the control.
@@ -63,7 +63,7 @@ public extension AttributedString {
     
     #endif
     
-    #if os(iOS) || os(OSX)
+    #if os(iOS) || os(visionOS) || os(OSX)
 
     /// Initialize a new text attachment with local image contained into the assets.
     ///

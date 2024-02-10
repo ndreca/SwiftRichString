@@ -55,7 +55,7 @@ extension NSAttributedString {
 }
 #endif
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if os(iOS) || os(visionOS) || os(tvOS) || os(watchOS)
 
 extension NSAttributedString.Key {
 	#if swift(>=4.2)

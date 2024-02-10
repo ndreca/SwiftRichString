@@ -28,7 +28,7 @@
 //    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //    THE SOFTWARE.
 
-#if os(tvOS) || os(watchOS) || os(iOS)
+#if os(tvOS) || os(watchOS) || os(iOS) || os(visionOS)
 import UIKit
 
 /// DynamicText encapsulate the attributes for fonts to automatically scale to match the current Dynamic Type settings. It uses UIFontMetrics.
@@ -39,7 +39,7 @@ public class DynamicText {
     /// which uses the body text style.
     public var style: UIFont.TextStyle?
     
-    #if os(OSX) || os(iOS) || os(tvOS)
+    #if os(OSX) || os(iOS) || os(visionOS) || os(tvOS)
     /// The trait collection to use when determining compatibility. The returned
     /// font is appropriate for use in an interface that adopts the specified traits.
     public var traitCollection: UITraitCollection?

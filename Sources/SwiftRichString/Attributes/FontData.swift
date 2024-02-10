@@ -50,7 +50,7 @@ public struct FontData {
 	/// Font object
 	var font: FontConvertible? { didSet { self.style?.invalidateCache() } }
 
-	#if os(tvOS) || os(watchOS) || os(iOS)
+	#if os(tvOS) || os(watchOS) || os(iOS) || os(visionOS)
     // Dynamic text atributes
     public var dynamicText: DynamicText? { didSet { self.style?.invalidateCache() } }
 
@@ -61,7 +61,7 @@ public struct FontData {
 	/// Size of the font
 	var size: CGFloat? { didSet { self.style?.invalidateCache() } }
 	
-	#if os(OSX) || os(iOS) || os(tvOS)
+	#if os(OSX) || os(iOS) || os(visionOS) || os(tvOS)
 	
 	/// Configuration for the number case, also known as "figure style".
 	var numberCase: NumberCase? { didSet { self.style?.invalidateCache() } }
@@ -177,7 +177,7 @@ public struct FontData {
 		guard var finalFont = (self.font ?? currentFont)?.font(size: size) else { return [:] }
 		
 		// compose the attributes
-		#if os(iOS) || os(tvOS) || os(OSX)
+		#if os(iOS) || os(visionOS) || os(tvOS) || os(OSX)
 		var attributes: [FontInfoAttribute] = []
 
         attributes += [self.numberCase].compactMap { $0 }
@@ -215,7 +215,7 @@ public struct FontData {
 		}
 		#endif
 
-		#if os(tvOS) || os(watchOS) || os(iOS)
+		#if os(tvOS) || os(watchOS) || os(iOS) || os(visionOS)
         // set scalable custom font if adapts to dynamic type
         if #available(iOS 11.0, watchOS 4.0, tvOS 11.0, *), adpatsToDynamicType == true {
             finalAttributes[.font] = scalableFont(from: finalFont)
@@ -229,7 +229,7 @@ public struct FontData {
 		return finalAttributes
 	}
 
-	#if os(tvOS) || os(watchOS) || os(iOS)
+	#if os(tvOS) || os(watchOS) || os(iOS) || os(visionOS)
     /// Returns a custom scalable font based on the received font
     ///
     /// - Parameter font: font in which the custom font will be based
@@ -241,7 +241,7 @@ public struct FontData {
             fontMetrics = UIFontMetrics(forTextStyle: textStyle)
         }
         
-        #if os(OSX) || os(iOS) || os(tvOS)
+        #if os(OSX) || os(iOS) || os(visionOS) || os(tvOS)
         return (fontMetrics ?? UIFontMetrics.default).scaledFont(for: font, maximumPointSize: dynamicText?.maximumSize ?? 0.0, compatibleWith: dynamicText?.traitCollection)
         #else
         return (fontMetrics ?? UIFontMetrics.default).scaledFont(for: font, maximumPointSize: dynamicText?.maximumSize ?? 0.0)
