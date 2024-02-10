@@ -33,7 +33,7 @@
 import Foundation
 
 // This is not supported on watchOS
-#if os(iOS) || os(tvOS) || os(OSX)
+#if os(iOS) || os(visionOS) || os(tvOS) || os(OSX)
 
 import CoreText
 
